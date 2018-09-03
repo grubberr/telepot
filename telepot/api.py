@@ -11,7 +11,7 @@ urllib3.disable_warnings()
 
 ENDPOINT = "https://api.telegram.org/"
 
-_default_pool_params = dict(num_pools=3, maxsize=10, retries=3, timeout=30)
+_default_pool_params = dict(num_pools=3, maxsize=100, retries=3, timeout=30)
 _onetime_pool_params = dict(num_pools=1, maxsize=1, retries=3, timeout=30)
 
 _pools = {
