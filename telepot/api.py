@@ -9,6 +9,7 @@ from . import exception, _isstring
 # Suppress InsecurePlatformWarning
 urllib3.disable_warnings()
 
+ENDPOINT = "https://api.telegram.org/"
 
 _default_pool_params = dict(num_pools=3, maxsize=10, retries=3, timeout=30)
 _onetime_pool_params = dict(num_pools=1, maxsize=1, retries=3, timeout=30)
@@ -45,7 +46,10 @@ def _create_onetime_pool():
 
 def _methodurl(req, **user_kw):
     token, method, params, files = req
-    return 'https://api.telegram.org/bot%s/%s' % (token, method)
+    url = '%sbot%s/%s' % (ENDPOINT, token, method)
+    return url
+    # original code
+    #return 'https://api.telegram.org/bot%s/%s' % (token, method)
 
 def _which_pool(req, **user_kw):
     token, method, params, files = req

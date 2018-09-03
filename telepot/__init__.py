@@ -464,8 +464,10 @@ class Bot(_BotBase):
         def on_event(self, fn):
             self._event_handler = fn
 
-    def __init__(self, token):
+    def __init__(self, token, endpoint="https://api.telegram.org/"):
         super(Bot, self).__init__(token)
+
+        api.ENDPOINT = endpoint
 
         self._scheduler = self.Scheduler()
 
